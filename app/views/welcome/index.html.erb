@@ -72,20 +72,21 @@
             <div class ="chat-panel">
                 <div class="row no-gutters">
                     <div class="col-md-3">
-                        <div class="chat-bubble chat-bubble--left">
-                            <em>Alan:</em> Test message  
-                        </div>
+                        
+                            <%= render @messages %>      
                     </div>
                 </div>
                 
                 
             <div class="row">
                 <div class="col-12">
-                    <div class="chat-box-tray">
-                        <i class="bi bi-emoji-smile"></i>
-                        <input type="text" placeholder = "Type your message here...">
-                        <i class="bi bi-send-fill"></i>
-                    </div>
+                    <%= form_for(@message, html: {role:"form"}, url:message_path) do |f|%>
+                        <div class="chat-box-tray">
+                            <i class="bi bi-emoji-smile"></i>
+                            <%= f.text_field :body, placeholder: "Type message here"%>
+                            <%=f.button '<i class="bi bi-send-fill send-button"></i>'.html_safe, class:"remove-submit-btn-style"%>
+                        </div>
+                    <%end%>
                 </div>
             </div>
             </div>
